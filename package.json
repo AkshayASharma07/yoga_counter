@@ -1,0 +1,22 @@
+{
+  "name": "prana-zen-yoga-counter",
+  "version": "1.0.0",
+  "description": "Mindful Yoga & Breathwork tracker foundation with tactile 3D rotating scroll dials and Zen aesthetics",
+  "main": "server.js",
+  "type": "module",
+  "scripts": {
+    "start": "node server.js",
+    "build": "node build-bundle.cjs"
+  },
+  "keywords": [
+    "yoga",
+    "breathwork",
+    "pranayama",
+    "scroll-dial",
+    "picker-wheel",
+    "zen",
+    "tactile-ui"
+  ],
+  "author": "",
+  "license": "MIT"
+}

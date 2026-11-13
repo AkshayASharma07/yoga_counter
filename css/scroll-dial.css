@@ -1,0 +1,238 @@
+/* ==========================================================================
+   Rotating Scroll Dial Component (iOS/Android Time-Picker Barrel Drum)
+   ========================================================================== */
+
+.zen-scroll-dial {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  position: relative;
+  user-select: none;
+  -webkit-user-select: none;
+  padding: 12px 16px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: 24px;
+  box-shadow: var(--shadow-md);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: var(--theme-transition);
+  touch-action: none;
+}
+
+.zen-scroll-dial:focus-within {
+  border-color: var(--border-focus);
+  box-shadow: var(--shadow-md), 0 0 0 3px var(--accent-sage-soft);
+}
+
+/* Container holding all columns */
+.zen-dial-columns {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 12px;
+  position: relative;
+}
+
+/* Individual Column Wrapper */
+.zen-dial-column-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Optional Column Label (e.g. "Hundreds", "Min", "Inhale") */
+.zen-dial-column-label {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--text-tertiary);
+  margin-bottom: 8px;
+  transition: color 0.3s ease;
+}
+
+.zen-dial-column-wrapper:focus-within .zen-dial-column-label {
+  color: var(--accent-sage);
+}
+
+/* The 3D Viewport Window */
+.zen-dial-column {
+  position: relative;
+  width: 68px;
+  height: 240px; /* 5 visible items at 48px height */
+  perspective: 750px;
+  perspective-origin: center center;
+  overflow: hidden;
+  border-radius: 16px;
+  cursor: grab;
+  outline: none;
+}
+
+.zen-dial-column:active {
+  cursor: grabbing;
+}
+
+/* Centered Selection Lens (Indicator bar) */
+.zen-dial-lens {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 48px;
+  transform: translateY(-50%);
+  background: var(--dial-lens-bg);
+  border-top: 1px solid var(--dial-lens-border);
+  border-bottom: 1px solid var(--dial-lens-border);
+  border-radius: 12px;
+  pointer-events: none;
+  z-index: 2;
+  box-shadow: var(--dial-lens-shadow);
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  transition: background 0.3s ease, border-color 0.3s ease;
+}
+
+.zen-dial-lens::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 12px;
+  background: linear-gradient(
+    180deg,
+    var(--dial-lens-highlight) 0%,
+    transparent 50%,
+    rgba(0, 0, 0, 0.03) 100%
+  );
+  pointer-events: none;
+}
+
+/* Top & Bottom Fade Vignettes to create cylindrical depth */
+.zen-dial-vignette {
+  position: absolute;
+  inset: 0;
+  background: var(--dial-fade-gradient);
+  pointer-events: none;
+  z-index: 3;
+}
+
+/* 3D Barrel Drum Container */
+.zen-dial-drum {
+  position: absolute;
+  top: 50%;
+  left: 0;
+  width: 100%;
+  height: 0;
+  transform-style: preserve-3d;
+  will-change: transform;
+}
+
+/* Individual Item on the Drum */
+.zen-dial-item {
+  position: absolute;
+  top: -24px; /* Half of 48px item height */
+  left: 0;
+  width: 100%;
+  height: 48px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-sans);
+  font-size: 1.65rem;
+  font-weight: 500;
+  color: var(--text-primary);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transform-style: preserve-3d;
+  cursor: pointer;
+  will-change: transform, opacity;
+  transition: color 0.2s ease;
+}
+
+.zen-dial-item.is-selected {
+  font-weight: 700;
+  color: var(--accent-sage);
+}
+
+/* Subtle separator between columns (e.g. ":" for time or "•" for rhythm) */
+.zen-dial-separator {
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--text-tertiary);
+  margin-top: 18px;
+  padding: 0 2px;
+  user-select: none;
+  pointer-events: none;
+  animation: pulseSeparator 3s ease-in-out infinite;
+}
+
+@keyframes pulseSeparator {
+  0%, 100% { opacity: 0.6; }
+  50% { opacity: 1; color: var(--accent-sage); }
+}
+
+/* Quick Stepper Chevrons (Optional tactile up/down clickers) */
+.zen-dial-stepper-btn {
+  background: none;
+  border: none;
+  color: var(--text-tertiary);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s ease;
+}
+
+.zen-dial-stepper-btn:hover {
+  color: var(--accent-sage);
+  background: var(--accent-sage-soft);
+  transform: scale(1.12);
+}
+
+.zen-dial-stepper-btn:active {
+  transform: scale(0.95);
+}
+
+.zen-dial-stepper-btn svg {
+  width: 16px;
+  height: 16px;
+  stroke-width: 2.5;
+}
+
+/* Compact variant for denser layouts */
+.zen-scroll-dial.compact {
+  padding: 8px 12px;
+  border-radius: 20px;
+}
+
+.zen-scroll-dial.compact .zen-dial-column {
+  width: 54px;
+  height: 200px;
+}
+
+.zen-scroll-dial.compact .zen-dial-item {
+  font-size: 1.35rem;
+  height: 40px;
+  top: -20px;
+}
+
+.zen-scroll-dial.compact .zen-dial-lens {
+  height: 40px;
+}
+
+/* Large Hero Dial variant */
+.zen-scroll-dial.hero {
+  padding: 18px 24px;
+  border-radius: 28px;
+}
+
+.zen-scroll-dial.hero .zen-dial-column {
+  width: 78px;
+  height: 260px;
+}
+
+.zen-scroll-dial.hero .zen-dial-item {
+  font-size: 2.1rem;
+}

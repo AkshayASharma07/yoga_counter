@@ -1,0 +1,201 @@
+/* ==========================================================================
+   Zen Theme & Design System
+   Mindful Yoga & Breathwork Experience
+   ========================================================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Marcellus&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap');
+
+:root {
+  /* ---------------------------------------------------------
+     Light Theme (Default): "Morning Mist & Bamboo"
+     --------------------------------------------------------- */
+  --bg-primary: #F5F7F3;
+  --bg-secondary: #EBEFE8;
+  --bg-tertiary: #E0E7DC;
+  --bg-surface: rgba(255, 255, 255, 0.78);
+  --bg-surface-solid: #FFFFFF;
+  --bg-surface-elevated: rgba(255, 255, 255, 0.92);
+  --bg-surface-translucent: rgba(255, 255, 255, 0.55);
+
+  --border-subtle: rgba(56, 77, 63, 0.10);
+  --border-medium: rgba(56, 77, 63, 0.18);
+  --border-focus: rgba(77, 118, 93, 0.45);
+
+  --text-primary: #212B24;
+  --text-secondary: #58695E;
+  --text-tertiary: #84968B;
+  --text-inverse: #FFFFFF;
+
+  --accent-sage: #4E765D;
+  --accent-sage-hover: #3E604A;
+  --accent-sage-light: #7E9E8A;
+  --accent-sage-soft: rgba(78, 118, 93, 0.12);
+
+  --accent-sand: #C5A37B;
+  --accent-sand-soft: rgba(197, 163, 123, 0.14);
+  --accent-terracotta: #C4795E;
+  --accent-terracotta-soft: rgba(196, 121, 94, 0.12);
+
+  --dial-lens-bg: rgba(78, 118, 93, 0.08);
+  --dial-lens-border: rgba(78, 118, 93, 0.22);
+  --dial-lens-highlight: rgba(255, 255, 255, 0.65);
+  --dial-fade-gradient: linear-gradient(
+    to bottom,
+    rgba(245, 247, 243, 0.98) 0%,
+    rgba(245, 247, 243, 0.7) 18%,
+    rgba(245, 247, 243, 0) 38%,
+    rgba(245, 247, 243, 0) 62%,
+    rgba(245, 247, 243, 0.7) 82%,
+    rgba(245, 247, 243, 0.98) 100%
+  );
+
+  --shadow-sm: 0 2px 8px rgba(33, 43, 36, 0.04);
+  --shadow-md: 0 10px 30px -6px rgba(33, 43, 36, 0.07), 0 2px 8px -2px rgba(33, 43, 36, 0.03);
+  --shadow-lg: 0 24px 48px -12px rgba(33, 43, 36, 0.10);
+  --shadow-glow: 0 0 28px rgba(78, 118, 93, 0.18);
+
+  /* Typography */
+  --font-serif: 'Marcellus', Georgia, serif;
+  --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+
+  /* Transitions */
+  --theme-transition: background 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                     color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                     border-color 0.4s cubic-bezier(0.16, 1, 0.3, 1),
+                     box-shadow 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ---------------------------------------------------------
+   Dark Theme: "Midnight Forest & Lunar Sand"
+   --------------------------------------------------------- */
+[data-theme="dark"] {
+  --bg-primary: #111613;
+  --bg-secondary: #171E19;
+  --bg-tertiary: #1F2823;
+  --bg-surface: rgba(24, 32, 27, 0.75);
+  --bg-surface-solid: #19221C;
+  --bg-surface-elevated: rgba(30, 40, 34, 0.88);
+  --bg-surface-translucent: rgba(24, 32, 27, 0.55);
+
+  --border-subtle: rgba(162, 188, 170, 0.10);
+  --border-medium: rgba(162, 188, 170, 0.18);
+  --border-focus: rgba(125, 171, 142, 0.45);
+
+  --text-primary: #EEF2EE;
+  --text-secondary: #9DB0A2;
+  --text-tertiary: #68796E;
+  --text-inverse: #111613;
+
+  --accent-sage: #77A588;
+  --accent-sage-hover: #8AB79B;
+  --accent-sage-light: #9DC3AC;
+  --accent-sage-soft: rgba(119, 165, 136, 0.15);
+
+  --accent-sand: #D5B48F;
+  --accent-sand-soft: rgba(213, 180, 143, 0.15);
+  --accent-terracotta: #DC8E75;
+  --accent-terracotta-soft: rgba(220, 142, 117, 0.15);
+
+  --dial-lens-bg: rgba(119, 165, 136, 0.13);
+  --dial-lens-border: rgba(119, 165, 136, 0.28);
+  --dial-lens-highlight: rgba(255, 255, 255, 0.08);
+  --dial-fade-gradient: linear-gradient(
+    to bottom,
+    rgba(17, 22, 19, 0.98) 0%,
+    rgba(17, 22, 19, 0.7) 18%,
+    rgba(17, 22, 19, 0) 38%,
+    rgba(17, 22, 19, 0) 62%,
+    rgba(17, 22, 19, 0.7) 82%,
+    rgba(17, 22, 19, 0.98) 100%
+  );
+
+  --shadow-sm: 0 2px 8px rgba(0, 0, 0, 0.35);
+  --shadow-md: 0 10px 32px -6px rgba(0, 0, 0, 0.5), 0 2px 10px -2px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 24px 50px -10px rgba(0, 0, 0, 0.7);
+  --shadow-glow: 0 0 32px rgba(119, 165, 136, 0.22);
+}
+
+/* Base resets & typography */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  font-size: 16px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: var(--font-sans);
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  min-height: 100vh;
+  line-height: 1.6;
+  transition: var(--theme-transition);
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Organic Ambient Background Orbs */
+.zen-ambient-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+  opacity: 0.65;
+  transition: opacity 0.5s ease;
+}
+
+.zen-ambient-orb {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+  will-change: transform;
+  animation: ambientFloat 26s infinite alternate ease-in-out;
+}
+
+.zen-ambient-orb-1 {
+  width: 520px;
+  height: 520px;
+  background: var(--accent-sage-soft);
+  top: -120px;
+  right: -100px;
+  animation-duration: 32s;
+}
+
+.zen-ambient-orb-2 {
+  width: 480px;
+  height: 480px;
+  background: var(--accent-sand-soft);
+  bottom: 8%;
+  left: -120px;
+  animation-duration: 28s;
+  animation-delay: -7s;
+}
+
+.zen-ambient-orb-3 {
+  width: 360px;
+  height: 360px;
+  background: var(--accent-terracotta-soft);
+  top: 45%;
+  right: 15%;
+  animation-duration: 35s;
+  animation-delay: -14s;
+}
+
+@keyframes ambientFloat {
+  0% {
+    transform: translate(0, 0) scale(1);
+  }
+  50% {
+    transform: translate(35px, -25px) scale(1.08);
+  }
+  100% {
+    transform: translate(-30px, 35px) scale(0.94);
+  }
+}
